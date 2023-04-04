@@ -7,8 +7,10 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export async function POST(request) {
+  const { prompt } = await request.json();
+
   const response = await openai.createImage({
-    prompt: "a puppy sniffing a flower",
+    prompt: prompt,
     n: 1,
     size: "512x512",
   });
